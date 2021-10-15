@@ -13,7 +13,7 @@
             <tr>
                 <th><h4>First Name</h4></th>
                 <th><h4>Last Name</h4></th>
-                <th><h4>Race Time (m:s:ms)</h4></th>
+                <th><h4>Race Time (h:m:s:ms)</h4></th>
             </tr>
         </thead>
         <tbody>
@@ -22,7 +22,7 @@
                     <tr>
                         <td>@r.FirstName</td>
                         <td>@r.LastName</td>
-                        <td>@r.RaceTime.Minutes:@r.RaceTime.Seconds:@r.RaceTime.Milliseconds</td>
+                        <td>@r.Hours:@r.Minutes:@r.Seconds:@r.Milliseconds</td>
                     </tr>
                 }
         </tbody>

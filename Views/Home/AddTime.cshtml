@@ -1,0 +1,56 @@
+﻿@model RaceTimes.Models.Racer
+
+
+@{
+    ViewData["Title"] = "Add Time";
+}
+
+<div>
+    @if (Model == null) 
+    {
+        <h3>Please enter race information</h3>
+    }
+    else if (!string.IsNullOrEmpty(Model.FirstName) && !string.IsNullOrEmpty(Model.LastName))
+    {
+        <h3>Thank you, @Model.FirstName @Model.LastName</h3>
+    }
+
+
+</div>
+
+<div>
+    <form class="form-group container" asp-action="AddTime" method="post">
+        <div class="w-50">
+            <label asp-for="FirstName">First Name:</label>
+            <input class="form-control" asp-for="FirstName" />
+        </div>
+        <div class="w-50">
+            <label asp-for="LastName">Last Name:</label>
+            <input class="form-control" asp-for="LastName" />
+        </div>
+        <div class="form-group row w-50">
+            <div class="col">
+                <label asp-for="Hours">Hours:</label>
+                <input class="form-control" placeholder="00" asp-for="Hours" />
+            </div>
+            <div class="col">
+                <label asp-for="Minutes">Minutes:</label>
+                <input class="form-control" placeholder="00" asp-for="Minutes" />
+            </div>
+            <div class="col">
+                <label asp-for="Seconds">Seconds:</label>
+                <input class="form-control" placeholder="00" asp-for="Seconds" />
+            </div>
+            <div class="col">
+                <label asp-for="Milliseconds">Milisesconds:</label>
+                <input class="form-control" placeholder="000" asp-for="Milliseconds" />
+            </div>
+        </div>
+        <button class="btn btn-success" type="submit">Submit</button>
+    </form>
+</div>
+
+<div>
+    <a asp-action="ListOfRacers">List of racers</a>
+</div>
+

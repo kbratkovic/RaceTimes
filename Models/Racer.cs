@@ -16,6 +16,9 @@ namespace RaceTimes.Models
         [Required, MaxLength(40)]
         public string LastName { get; set; }
 
-        public TimeSpan RaceTime { get; set; }
+        public int Hours { get; set; }
+        public int Minutes { get; set; }
+        public int Seconds { get; set; }
+        public int Milliseconds { get; set; }
     }
 }

@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RaceTimes.Models;
 
 namespace RaceTimes.Migrations
 {
     [DbContext(typeof(RacerDbContext))]
-    partial class RacerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211015222246_changeRacerModel")]
+    partial class changeRacerModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -18,12 +18,30 @@ namespace RaceTimes.Controllers
             repository = repo;
         }
 
-        public IActionResult Index() => View(repository.Racers.OrderBy(r => r.RaceTime));
+        public IActionResult Index() => View(repository.Racers.OrderBy(h => h.Hours).ThenBy(m => m.Minutes).ThenBy(s => s.Seconds));
 
-        public IActionResult Privacy()
+        [HttpGet]
+        public IActionResult AddTime()
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult AddTime(Racer racer)
+        {
+            if (racer.FirstName != null && racer.LastName != null
+                && racer.Hours != 0 && racer.Minutes != 0 && racer.Seconds != 0 && racer.Milliseconds != 0)
+            {
+                UserTimesRepository.AddUserTime(racer);
+            }
+            return View("AddTime", racer);
+        }
+
+        public ViewResult ListOfRacers()
+        {
+            return View(UserTimesRepository.UserTimes);
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
