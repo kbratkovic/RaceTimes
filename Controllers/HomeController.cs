@@ -30,7 +30,7 @@ namespace RaceTimes.Controllers
         public IActionResult AddTime(Racer racer)
         {
             if (racer.FirstName != null && racer.LastName != null
-                && racer.Hours != 0 && racer.Minutes != 0 && racer.Seconds != 0 && racer.Milliseconds != 0)
+                && racer.Hours >= 0 && racer.Minutes >= 0 && racer.Seconds >= 0 && racer.Milliseconds >= 0)
             {
                 UserTimesRepository.AddUserTime(racer);
             }

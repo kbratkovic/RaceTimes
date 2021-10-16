@@ -6,16 +6,17 @@
 }
 
 <div>
-    @if (Model == null) 
+    @if (Model != null)
+    {
+        if (!string.IsNullOrEmpty(Model.FirstName) && !string.IsNullOrEmpty(Model.LastName)) 
+        {
+            <h3>Thank you, @Model.FirstName @Model.LastName</h3>
+        }
+    }
+    else
     {
         <h3>Please enter race information</h3>
     }
-    else if (!string.IsNullOrEmpty(Model.FirstName) && !string.IsNullOrEmpty(Model.LastName))
-    {
-        <h3>Thank you, @Model.FirstName @Model.LastName</h3>
-    }
-
-
 </div>
 
 <div>
