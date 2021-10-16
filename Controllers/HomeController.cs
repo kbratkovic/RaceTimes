@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using RaceTimes.Models;
 using System;
@@ -37,6 +38,7 @@ namespace RaceTimes.Controllers
             return View("AddTime", racer);
         }
 
+        [Authorize]
         public ViewResult ListOfRacers()
         {
             return View(UserTimesRepository.UserTimes);
