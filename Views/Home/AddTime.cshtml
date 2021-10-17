@@ -21,6 +21,7 @@
 
 <div>
     <form class="form-group container" asp-action="AddTime" method="post">
+        <div asp-validation-summary="All"></div>
         <div class="w-50">
             <label asp-for="FirstName">First Name:</label>
             <input class="form-control" asp-for="FirstName" />

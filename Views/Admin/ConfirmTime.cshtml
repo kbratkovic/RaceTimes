@@ -11,7 +11,7 @@
 
 <div>
     <a class="btn btn-primary mb-3" asp-controller="Admin" asp-action="ConfirmTime">Confirm Time</a>
-    <a class="btn btn-danger mb-3" asp-controller="Admin" asp-action="Index">Delete Time</a>
+    <a class="btn btn-danger mb-3" asp-controller="Admin" asp-action="Index">All Times</a>
 </div>
 
 <div class="text-center">
@@ -41,6 +41,11 @@
             }
         </tbody>
     </table>
-
+    @if (!Model.Any())
+    {
+        <div>
+            <h5>There is no new race time entries.</h5>
+        </div>
+    }
 </div>
 

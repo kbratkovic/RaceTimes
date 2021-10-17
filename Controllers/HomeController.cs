@@ -25,20 +25,23 @@ namespace RaceTimes.Controllers
 
 
         [HttpGet]
-        public IActionResult AddTime() => View();
+        public IActionResult AddTime() => View("AddTime");
 
 
         [HttpPost]
         public IActionResult AddTime(Racer racer)
         {
-            if (racer.FirstName != null && racer.LastName != null
-                && racer.Hours >= 0 && racer.Minutes >= 0 && racer.Seconds >= 0 && racer.Milliseconds >= 0)
+            if (ModelState.IsValid)
             {
                 RacerIdCounter++;
                 racer.RacerID = RacerIdCounter;
                 UserTimesRepository.AddUserTime(racer);
+                return View("AddTime", racer);
+            } 
+            else
+            {
+                return View("AddTime");
             }
-            return View("AddTime", racer);
         }
 
 

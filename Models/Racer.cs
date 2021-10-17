@@ -10,15 +10,22 @@ namespace RaceTimes.Models
     {
         public int RacerID { get; set; }
 
-        [Required, MaxLength(30)]
+        [Required(ErrorMessage = "The First Name field is required."), MaxLength(30)]
         public string FirstName { get; set; }
 
-        [Required, MaxLength(40)]
+        [Required(ErrorMessage = "The Last Name field is required."), MaxLength(40)]
         public string LastName { get; set; }
 
+        [Required(ErrorMessage = "The field Hours must be between 0 and 23."), Range(0, 23)]
         public int Hours { get; set; }
+
+        [Required, Range(0, 59)]
         public int Minutes { get; set; }
+
+        [Required, Range(0, 59)]
         public int Seconds { get; set; }
+
+        [Required, Range(0, 999)]
         public int Milliseconds { get; set; }
     }
 }
