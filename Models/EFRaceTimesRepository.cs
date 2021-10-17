@@ -15,5 +15,18 @@ namespace RaceTimes.Models
         }
 
         public IQueryable<Racer> Racers => context.Racers;
+        
+        public void AddRaceTime(Racer r)
+        {
+            context.Add(r);
+            context.SaveChanges();
+        }
+
+        public void DeleteRaceTime(Racer r)
+        {
+            context.Remove(r);
+            context.SaveChanges();
+        }
+
     }
 }

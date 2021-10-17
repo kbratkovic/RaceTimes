@@ -7,13 +7,19 @@ namespace RaceTimes.Models
 {
     public static class UserTimesRepository
     {
-        private static List<Racer> userTimes = new List<Racer>();
+        private static List<Racer> userTimesList = new List<Racer>();
 
-        public static IEnumerable<Racer> UserTimes => userTimes;
+        public static IEnumerable<Racer> UserTimes => userTimesList;
 
         public static void AddUserTime(Racer userTime)
         {
-            userTimes.Add(userTime);
+            userTimesList.Add(userTime);
         }
+
+        public static void DeleteUserTime(Racer userTime)
+        {
+            userTimesList.Remove(userTime);
+        }
+
     }
 }

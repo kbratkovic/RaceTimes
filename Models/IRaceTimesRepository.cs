@@ -8,5 +8,8 @@ namespace RaceTimes.Models
     public interface IRaceTimesRepository
     {
         IQueryable<Racer> Racers { get; }
+
+        void AddRaceTime(Racer r);
+        void DeleteRaceTime(Racer r);
     }
 }

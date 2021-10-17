@@ -1,0 +1,45 @@
+﻿@model IQueryable<Racer>
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<h3 class="display-4">Admin area: Delete time</h3>
+
+<div>
+    <a class="btn btn-primary mb-3" asp-controller="Admin" asp-action="ConfirmTime">Confirm Time</a>
+    <a class="btn btn-danger mb-3" asp-controller="Admin" asp-action="Index">Delete Time</a>
+</div>
+
+<div class="text-center">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th><h4>First Name</h4></th>
+                <th><h4>Last Name</h4></th>
+                <th><h4>Race Time (h:m:s:ms)</h4></th>
+                <th><h4>Action</h4></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var r in Model)
+            {
+                <tr>
+                    <td>@r.FirstName</td>
+                    <td>@r.LastName</td>
+                    <td>@r.Hours:@r.Minutes:@r.Seconds:@r.Milliseconds</td>
+                    <td>
+                        <div class="w-100 btn-group">
+                            <a asp-controller="Admin" asp-action="Delete" asp-route-Id="@r.RacerID" class="btn btn-danger mx-1">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+

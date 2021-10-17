@@ -13,19 +13,20 @@ namespace RaceTimes.Controllers
     public class HomeController : Controller
     {
         private IRaceTimesRepository repository;
+        private static int RacerIdCounter = 0;
 
         public HomeController(IRaceTimesRepository repo)
         {
             repository = repo;
         }
 
-        public IActionResult Index() => View(repository.Racers.OrderBy(h => h.Hours).ThenBy(m => m.Minutes).ThenBy(s => s.Seconds));
+        public IActionResult Index() => 
+            View(repository.Racers.OrderBy(h => h.Hours).ThenBy(m => m.Minutes).ThenBy(s => s.Seconds));
+
 
         [HttpGet]
-        public IActionResult AddTime()
-        {
-            return View();
-        }
+        public IActionResult AddTime() => View();
+
 
         [HttpPost]
         public IActionResult AddTime(Racer racer)
@@ -33,10 +34,13 @@ namespace RaceTimes.Controllers
             if (racer.FirstName != null && racer.LastName != null
                 && racer.Hours >= 0 && racer.Minutes >= 0 && racer.Seconds >= 0 && racer.Milliseconds >= 0)
             {
+                RacerIdCounter++;
+                racer.RacerID = RacerIdCounter;
                 UserTimesRepository.AddUserTime(racer);
             }
             return View("AddTime", racer);
         }
+
 
         [Authorize]
         public ViewResult ListOfRacers()
