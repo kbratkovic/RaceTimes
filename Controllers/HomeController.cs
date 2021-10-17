@@ -31,16 +31,16 @@ namespace RaceTimes.Controllers
         [HttpPost]
         public IActionResult AddTime(Racer racer)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
+            {
+                return View("AddTime");
+            } 
+            else
             {
                 RacerIdCounter++;
                 racer.RacerID = RacerIdCounter;
                 UserTimesRepository.AddUserTime(racer);
                 return View("AddTime", racer);
-            } 
-            else
-            {
-                return View("AddTime");
             }
         }
 
