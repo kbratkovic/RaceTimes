@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace RaceTimes.Models
 {
-    public static class UserTimesRepository
+    public class UserTimesRepository
     {
         private static List<Racer> userTimesList = new List<Racer>();
 
