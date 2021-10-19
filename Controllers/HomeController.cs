@@ -20,6 +20,7 @@ namespace RaceTimes.Controllers
             repository = repo;
         }
 
+
         public IActionResult Index() => 
             View(repository.Racers.OrderBy(h => h.Hours).ThenBy(m => m.Minutes).ThenBy(s => s.Seconds));
 
@@ -35,20 +36,11 @@ namespace RaceTimes.Controllers
             {
                 return View("AddTime");
             } 
-            else
-            {
-                RacerIdCounter++;
-                racer.RacerID = RacerIdCounter;
-                UserTimesRepository.AddUserTime(racer);
-                return View("AddTime", racer);
-            }
-        }
-
-
-        [Authorize]
-        public ViewResult ListOfRacers()
-        {
-            return View(UserTimesRepository.UserTimes);
+            
+            RacerIdCounter++;
+            racer.RacerID = RacerIdCounter;
+            UserTimesRepository.AddUserTime(racer);
+            return View("AddTime", racer);
         }
 
 
